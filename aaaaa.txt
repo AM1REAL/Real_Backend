@@ -1,0 +1,23 @@
+0.) from news.models import *
+    from django.contrib.auth.models import User
+    from django.db import models
+1.) u1 = User.objects.create_user(username='батя')
+    u2 = User.objects.create_user(username='сынок')
+2.) a1 = Author.objects.create(user=u1)
+    a2 = Author.objects.create(user=u2)
+3.) cat1 = Category.objects.create(name='Политика')
+    cat2 = Category.objects.create(name='Спорт')
+    cat3 = Category.objects.create(name='Экономика')
+    cat4 = Category.objects.create(name='Технологии')
+4.) post1 = Post.objects.create(author_id = a1, post_type = article, topic_name = 'Как технологии влияют на спортивную индустрию?', post_text = 'gjfhgjfhdjkghdfkhgjdfkhgjkdfhgjkhdfjkghdfjkghkdjfhgjkdfhgjdfhgkjdfhgkjdf')
+    post2 = Post.objects.create(author_id = a2, post_type = news, topic_name = 'Главный офис Adrik CORP был взорван ночью с 15 на 16 марта группой из 6 человек!!!', post_text = 'Крч в чём дело было? Группа из 6 человек въезжают в главное здание Adrik CORP на фургоне, который был заминирован. Далее группа вылезла из фургона и стала бежать нафиг. Здание взорвалось, один из террористов погиб во время взрыва.')
+    post3 = Post.objects.create(author_id = a1, post_type = article, topic_name = 'Статья не о чём', post_text = 'blah-bla-blah-blah-blah-blah')
+5.) post_cat1 = PostCategory.objects.create(post = post1, category = cat2)
+    post_cat2 = PostCategory.objects.create(post = post2, category = cat3)
+    post_cat3 = PostCategory.objects.create(post = post3, category = cat1)
+6.) comm1 = Comment.objects.create(post = post1, user = u2, comm_text = 'Очень информативно, ставлю лайк')
+    comm2 = Comment.objects.create(post = post2, user = u1, comm_text = 'Трындец!!!!')
+    comm3 = Comment.objects.create(post = post3, user = u2, comm_text = 'Мне взяло где-то 48 часов осознать ваще, чё происходит')
+    comm4 = Comment.objects.create(post = post1, user = u2, comm_text = '???')
+7.) post1.like(), comm2.like(), post1.dislike()  так далее
+8.) 
